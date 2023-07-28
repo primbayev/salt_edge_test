@@ -1,0 +1,37 @@
+<div class="container">
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Nature</th>
+      <th>Balance</th>
+      <th>Currency</th>
+      <th>Transactions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.salt_edge_id %></td>
+
+        <td><%= account.name %></td>
+
+        <td><%= account.nature %></td>
+
+        <td><%= account.balance %></td>
+
+        <td><%= account.currency_code %></td>
+
+        <td>
+          <%=
+            link_to account.transactions.count,
+                    connection_account_transactions_path(account.connection, account)
+          %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

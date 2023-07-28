@@ -10,5 +10,14 @@ module ApiGateway
       @secret = rails_credentials.fetch(:secret)
       @base_url = rails_credentials.fetch(:base_url)
     end
+
+    def headers
+      {
+        'Accept' => 'application/json',
+        'Content-Type' => 'application/json',
+        'App-id' => @app_id,
+        'Secret' => @secret
+      }
+    end
   end
 end

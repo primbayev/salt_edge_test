@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salt_edge_id: MyString
+  balance: 9.99
+  currency_code: MyString
+  nature: MyString
+  name: MyString
+  connection: one
+
+two:
+  salt_edge_id: MyString
+  balance: 9.99
+  currency_code: MyString
+  nature: MyString
+  name: MyString
+  connection: two

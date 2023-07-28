@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salt_edge_id: MyString
+  made_on: 2023-07-28 06:04:36
+  category: MyString
+  description: MyString
+  amount: 9.99
+  currency_code: MyText
+  account: one
+
+two:
+  salt_edge_id: MyString
+  made_on: 2023-07-28 06:04:36
+  category: MyString
+  description: MyString
+  amount: 9.99
+  currency_code: MyText
+  account: two
