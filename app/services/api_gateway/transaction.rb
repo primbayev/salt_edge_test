@@ -1,10 +1,10 @@
 module ApiGateway
   class Transaction < Base
-    def show(connection_salt_edge_id, account_salt_edge_id)
+    def show(connection_id, account_id)
       retries ||= 0
 
       @response = Faraday.new(
-        params: { connection_id: connection_salt_edge_id, account_id: account_salt_edge_id },
+        params: { connection_id: connection_id, account_id: account_id },
         headers: headers
       ).get("#{@base_url}/transactions")
     rescue Faraday::ConnectionFailed => e
@@ -17,11 +17,11 @@ module ApiGateway
       end
     end
 
-    def show_pending(connection_salt_edge_id, account_salt_edge_id)
+    def show_pending(connection_id, account_id)
       retries ||= 0
 
       @response = Faraday.new(
-        params: { connection_id: connection_salt_edge_id, account_id: account_salt_edge_id },
+        params: { connection_id: connection_id, account_id: account_id },
         headers: headers
       ).get("#{@base_url}/transactions/pending")
     rescue Faraday::ConnectionFailed => e

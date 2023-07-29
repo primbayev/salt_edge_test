@@ -15,8 +15,8 @@ module ApiGateway
         data = JSON.parse(@response.body).deep_symbolize_keys[:data]
 
         ::Customer.create(
+          id: data[:id],
           user_id: @current_user.id,
-          salt_edge_id: data[:id],
           identifier: data[:identifier]
         )
       end

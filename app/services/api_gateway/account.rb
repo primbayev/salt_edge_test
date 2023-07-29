@@ -1,10 +1,10 @@
 module ApiGateway
   class Account < Base
-    def show(connection_salt_edge_id)
+    def show(connection_id)
       retries ||= 0
 
       @response = Faraday.new(
-        params: { connection_id: connection_salt_edge_id },
+        params: { connection_id: connection_id },
         headers: headers
       ).get("#{@base_url}/accounts")
     rescue Faraday::ConnectionFailed => e

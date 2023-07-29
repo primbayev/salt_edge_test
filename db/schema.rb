@@ -14,41 +14,37 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_000436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "salt_edge_id"
+  create_table "accounts", force: :cascade do |t|
     t.decimal "balance", precision: 10, scale: 2, default: "0.0"
     t.string "currency_code"
     t.string "nature"
     t.string "name"
-    t.uuid "connection_id", null: false
+    t.bigint "connection_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["connection_id"], name: "index_accounts_on_connection_id"
   end
 
-  create_table "connections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "salt_edge_id"
+  create_table "connections", force: :cascade do |t|
     t.string "provider_id"
     t.string "provider_code"
     t.string "provider_name"
     t.string "status"
-    t.uuid "customer_id", null: false
+    t.bigint "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_connections_on_customer_id"
   end
 
-  create_table "customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "salt_edge_id"
+  create_table "customers", force: :cascade do |t|
     t.string "identifier"
-    t.uuid "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
-  create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "salt_edge_id"
+  create_table "transactions", force: :cascade do |t|
     t.date "made_on"
     t.string "category"
     t.string "description"
@@ -56,13 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_000436) do
     t.boolean "duplicated", default: false
     t.decimal "amount", precision: 10, scale: 2, default: "0.0"
     t.string "currency_code"
-    t.uuid "account_id", null: false
+    t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

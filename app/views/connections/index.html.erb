@@ -8,16 +8,17 @@
         <th>Provider name</th>
         <th>Status</th>
         <th>Accounts</th>
-        <th>Actions</th>
+        <th>Transactions</th>
+        <th colspan="3">Actions</th>
       </tr>
     </thead>
 
     <tbody>
       <% @connections.each do |connection| %>
         <tr>
-          <td><%= connection.salt_edge_id %></td>
+          <td><%= connection.id %></td>
 
-          <td><%= connection.customer.salt_edge_id %></td>
+          <td><%= connection.customer.id %></td>
 
           <td><%= connection.customer.identifier %></td>
 
@@ -32,7 +33,22 @@
             %>
           </td>
 
-          <td></td>
+          <td><%= connection.transactions.count %></td>
+
+          <td>
+            <%=
+              link_to "Reconnect",
+                      connect_sessions_reconnect_path(connection_id: connection.id),
+                      target: '_blank'
+            %>
+          </td>
+
+          <td>
+            <%=
+              link_to "Refresh",
+                      connections_refresh_path(connection)
+            %>
+          </td>
         </tr>
       <% end %>
     </tbody>
