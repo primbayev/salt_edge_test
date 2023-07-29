@@ -4,7 +4,7 @@ module ImportFromApiGateway
       @current_user = current_user
     end
 
-    def perform
+    def process
       ActiveRecord::Base.transaction do
         all_salt_edge_connections = []
         all_salt_edge_accounts = []

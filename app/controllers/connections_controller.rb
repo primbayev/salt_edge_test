@@ -4,7 +4,7 @@ class ConnectionsController < ApplicationController
   end
 
   def create
-    ImportFromApiGateway::ConnectionsAndDependencies.new(current_user).perform
+    ImportConnectionsAccountsTransactionsJob.perform_async(current_user.id)
 
     redirect_to connections_path
   end

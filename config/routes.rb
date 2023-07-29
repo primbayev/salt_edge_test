@@ -29,5 +29,5 @@ Rails.application.routes.draw do
       as: 'connect_sessions_refresh'
 
   # Defines the root path route ("/")
-  root 'home#index'
+  root 'connections#index'
 end

@@ -70,10 +70,15 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    autoprefixer-rails (10.4.13.0)
+      execjs (~> 2)
     bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -101,12 +106,17 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
+    execjs (2.8.1)
     faraday (2.7.10)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
+    ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    gretel (4.5.0)
+      actionview (>= 5.1, < 7.1)
+      railties (>= 5.1, < 7.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -196,6 +206,8 @@ GEM
     rexml (3.2.6)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -247,11 +259,13 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   bootsnap
+  bootstrap-sass
   capybara
   cssbundling-rails
   debug
   devise (~> 4.8.1)
   faraday (~> 2.7.10)
+  gretel
   jbuilder
   jsbundling-rails
   pg (~> 1.1)

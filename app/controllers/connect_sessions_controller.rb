@@ -8,7 +8,7 @@ class ConnectSessionsController < ApplicationController
     connection = ::Connection.find(params[:connection_id])
     connect_session = ApiGateway::Connection
                         .new(current_user)
-                        .create_reconnect_session(connection, connections_url)
+                        .create_reconnect_session(connection, connections_create_url)
 
     customer_id = connection.customer.id
     connect_url = JSON.parse(connect_session.body).deep_symbolize_keys[:data][:connect_url]
