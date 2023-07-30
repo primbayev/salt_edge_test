@@ -6,7 +6,7 @@ module ApiGateway
       @response = Faraday.new(
         headers: headers
       ).post("#{@base_url}/customers") do |req|
-        req.body = { data: { identifier: @current_user.email } }.to_json
+        req.body = JSON.generate( { data: { identifier: @current_user.email } } )
       end
 
       if @current_user.customer
