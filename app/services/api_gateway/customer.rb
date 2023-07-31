@@ -12,13 +12,17 @@ module ApiGateway
       if @current_user.customer
         @current_user.customer
       else
-        data = JSON.parse(@response.body).deep_symbolize_keys[:data]
+        response = JSON.parse(@response.body).deep_symbolize_keys
 
-        ::Customer.create(
-          id: data[:id],
-          user_id: @current_user.id,
-          identifier: data[:identifier]
-        )
+        if response.dig(:error, :class) == 'DuplicatedCustomer'
+          @current_user.destroy
+        else
+          ::Customer.create(
+            id: response.dig(:data, :id),
+            user_id: @current_user.id,
+            identifier: response.dig(:data, :identifier)
+          )
+        end
       end
     rescue Faraday::ConnectionFailed => e
       Rails.logger.error("#{e.class}: #{e.message} --- Retrying request")
