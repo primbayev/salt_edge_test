@@ -1,7 +1,9 @@
 class ConnectSessionsController < ApplicationController
   def external_connect_show
-    redirect_to session["connect_url_#{params[:customer_id]}"],
-                allow_other_host: true
+    after_sign_in_path_for(current_user) if is_navigational_format?
+
+    @create_connection_url = session["connect_url_#{params[:customer_id]}"]
+    render 'external_connect_show', locals: { create_connection_url: @create_connection_url }
   end
 
   def reconnect

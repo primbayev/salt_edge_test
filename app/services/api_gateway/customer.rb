@@ -16,6 +16,7 @@ module ApiGateway
 
         if response.dig(:error, :class) == 'DuplicatedCustomer'
           @current_user.destroy
+          sign_out(@current_user)
         else
           ::Customer.create(
             id: response.dig(:data, :id),
