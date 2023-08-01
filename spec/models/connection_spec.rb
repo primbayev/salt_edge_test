@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Connection, type: :model do
+  after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   before(:all) do
     @connection = create(:connection)
   end

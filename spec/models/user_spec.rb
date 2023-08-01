@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   before(:all) do
     @user = create(:user)
   end

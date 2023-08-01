@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Transaction, type: :model do
+  after(:all) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   before(:all) do
     @transaction = create(:transaction)
   end

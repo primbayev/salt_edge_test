@@ -66,6 +66,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'webmock'
+  gem 'rspec-sidekiq'
 end
 
 group :development do
