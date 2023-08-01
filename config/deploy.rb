@@ -34,6 +34,57 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
 
+#
+# namespace :puma do
+#   desc 'Create Directories for Puma Pids and Socket'
+#   task :make_dirs do
+#     on roles(:app) do
+#       execute "mkdir #{shared_path}/tmp/sockets -p"
+#       execute "mkdir #{shared_path}/tmp/pids -p"
+#     end
+#   end
+#
+#   before 'deploy:starting', 'puma:make_dirs'
+# end
+#
+# namespace :deploy do
+#   desc 'Make sure local git is in sync with remote.'
+#   task :check_revision do
+#     on roles(:app) do
+#       unless `git rev-parse HEAD` == `git rev-parse origin/main`
+#         puts 'WARNING: HEAD is not the same as origin/main'
+#         puts 'Run `git push` to sync changes.'
+#         exit
+#       end
+#     end
+#   end
+#
+#   desc 'Initial Deploy'
+#   task :initial do
+#     on roles(:app) do
+#       before 'deploy:restart', 'puma:start'
+#       invoke 'deploy'
+#     end
+#   end
+#
+#   before :starting,     :check_revision
+#   after  :finishing,    :compile_assets
+#   after  :finishing,    :cleanup
+# end
+#
+# namespace :docker do
+#   desc 'run docker'
+#   task :compose do
+#     on roles(:app) do
+#       within "compose" do
+#         with rails_env: "#{fetch(:stage)}" do
+#           execute "docker-compose -f docker-compose.yml up"
+#         end
+#       end
+#     end
+#   end
+# end
+
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
