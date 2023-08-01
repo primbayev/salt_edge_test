@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: open_banking_api_interface_production
-  username: open_banking_api_interface
+  database: db
+  username: db
   password: <%= ENV["OPEN_BANKING_API_INTERFACE_DATABASE_PASSWORD"] %>
