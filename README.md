@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* The app is deployed on `Digital Ocean`
+http://134.209.84.80
 
-Things you may want to cover:
+* I utilized `capistrano` as deployment tool
 
-* Ruby version
+* Ruby version: `3.1.2`
 
-* System dependencies
+* Rails version: `7.0.6`
 
-* Configuration
+* I used `rspec` as testing tool
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Background jobs were realized with `redis` and `sidekiq`
